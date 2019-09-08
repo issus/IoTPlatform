@@ -1,0 +1,33 @@
+﻿@if (ViewData["TitlePanel"] as bool? == true)
+{
+    <div class="panel m-b-none">
+        <div class="panel-body">
+            <h3 class="m-b-xs">
+                <i class="pe @ViewData["IconClass"] text-warning m-r-xs"></i> @ViewData["Title"]</h3>
+            <hr>
+            @if (!string.IsNullOrWhiteSpace(ViewData["SubTitle"] as string))
+            {
+                <p class="small">
+                    @ViewData["SubTitle"]
+                </p>
+                <hr>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <div class="view-header">
+        <div class="pull-right text-right" style="line-height: 14px">
+            <breadcrumb></breadcrumb>
+        </div>
+        <div class="header-icon">
+            <i class="pe page-header-icon @ViewData["IconClass"]"></i>
+        </div>
+        <div class="header-title">
+            <h3>@ViewData["Title"]</h3>
+            <small>@ViewData["SubTitle"]</small>
+        </div>
+    </div>
+    <hr>
+}

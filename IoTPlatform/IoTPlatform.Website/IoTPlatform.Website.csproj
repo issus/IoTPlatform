@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-IoTPlatform.Website-338c429d-16d4-463e-8362-1463aa44876a</UserSecretsId>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <Authors>Mark Harris</Authors>
+    <Company>Original Circuit</Company>
+    <TypeScriptBuildMode>true</TypeScriptBuildMode>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\components\bootstrap\.github\**" />
+    <Compile Remove="wwwroot\components\flot\.circleci\**" />
+    <Compile Remove="wwwroot\components\Font-Awesome\.github\**" />
+    <Compile Remove="wwwroot\components\summernote\.github\**" />
+    <Content Remove="wwwroot\components\bootstrap\.github\**" />
+    <Content Remove="wwwroot\components\flot\.circleci\**" />
+    <Content Remove="wwwroot\components\Font-Awesome\.github\**" />
+    <Content Remove="wwwroot\components\summernote\.github\**" />
+    <EmbeddedResource Remove="wwwroot\components\bootstrap\.github\**" />
+    <EmbeddedResource Remove="wwwroot\components\flot\.circleci\**" />
+    <EmbeddedResource Remove="wwwroot\components\Font-Awesome\.github\**" />
+    <EmbeddedResource Remove="wwwroot\components\summernote\.github\**" />
+    <None Remove="wwwroot\components\bootstrap\.github\**" />
+    <None Remove="wwwroot\components\flot\.circleci\**" />
+    <None Remove="wwwroot\components\Font-Awesome\.github\**" />
+    <None Remove="wwwroot\components\summernote\.github\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="MySql.Data" Version="8.0.16" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.16" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Sendgrid" Version="9.11.0" />
+    <PackageReference Include="SmartBreadcrumbs" Version="2.1.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\IoTPlatform.Data\IoTPlatform.Data.csproj" />
+    <ProjectReference Include="..\IoTPlatform.Logic\IoTPlatform.Logic.csproj" />
+  </ItemGroup>
+
+</Project>

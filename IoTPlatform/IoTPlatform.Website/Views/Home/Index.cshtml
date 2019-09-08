@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Dashboard"; // page title. shown when BareBody is false
+    ViewData["SubTitle"] = "Dashboard subtitle"; // page subtitle text. only shown when BareBody and TitlePanel are both false
+    ViewData["IconClass"] = "pe-7s-config"; // css class for the title icon. shown when BareBody is false
+    ViewData["BareBody"] = false; // if true skips rendering the title and the body panel, allowing for custom layouts. default is false
+    ViewData["TitlePanel"] = false; // if true layout makes use of the alternate layout with a title panel without a subtitle, instead of a view-title. default is false
+    ViewData["Container"] = "fluid"; // possible values are "fluid", "center" and "fixed". if not found defaults to "fluid". 
+    ViewData["ContentClass"] = ""; // customizable css class to be applied to the parent element of the body content. useful for setting column sizes
+    ViewData["BodyPanelFilled"] = false; // fill the body panel background or leave it transparent. default is true
+    ViewData["BackLink"] = null; // text to show for a prompt-like layout with a back link button instead of the nav bar. default is null
+}
+
+<h2 class="m-b-none">Welcome</h2>
+<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>

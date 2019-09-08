@@ -1,0 +1,10 @@
+div#cookieConsent {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+}
+
+div#cookieConsent > a {
+    color: #fff0f0;
+    font-weight: 600;
+}

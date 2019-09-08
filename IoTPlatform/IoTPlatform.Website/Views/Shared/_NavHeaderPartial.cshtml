@@ -1,0 +1,89 @@
+﻿@using System.Text.RegularExpressions
+@using IoTPlatform.Data.Identity
+@using Microsoft.AspNetCore.Html
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<WebProfileUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+
+    string PageNavClass(string page, string area = "")
+    {
+        var activePageUrl = Context.Request.Path;
+        string queryPageUrl;
+        if (!string.IsNullOrEmpty(area))
+        {
+            queryPageUrl = Url.Page(page, new {area});
+        }
+        else
+        {
+            queryPageUrl = Regex.Replace(Url.Content(page), "/Index$", "");
+            if (string.IsNullOrEmpty(queryPageUrl))
+            {
+                queryPageUrl = "/";
+            }
+        }
+        return string.Equals(activePageUrl, queryPageUrl, StringComparison.OrdinalIgnoreCase) ? "active" : null;
+    }
+
+    Func<string, IHtmlContent> NavItemCategory = @<li class='nav-category'>@item</li>;
+
+    Func<(string text, string page), IHtmlContent> NavItemPage = @<li class='@PageNavClass(item.page)'>
+                                                                     <a class='nav-link' href='@item.page'>@item.text</a>
+                                                                 </li>;
+
+    Func<(string text, string page, string area), IHtmlContent> NavItemPageArea = @<li class='@PageNavClass(item.page, item.area)'>
+                                                                                      <a class='nav-link' asp-area='@item.area' asp-page='@item.page'>@item.text</a>
+                                                                                  </li>;
+}
+
+<!-- HEADER -->
+<nav class="navbar navbar-expand-md navbar-default fixed-top">
+    <div class="navbar-header">
+        <div id="mobile-menu">
+            <div class="left-nav-toggle">
+                <a href="#">
+                    <i class="stroke-hamburgermenu"></i>
+                </a>
+            </div>
+        </div>
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+            PORTAL
+            <span>v1.0</span>
+        </a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+        <div class="left-nav-toggle">
+            <a href="#">
+                <i class="stroke-hamburgermenu"></i>
+            </a>
+        </div>
+        <span class="mr-auto"></span>
+        <partial name="_LoginPartial"/>
+    </div>
+</nav>
+<!-- /HEADER -->
+<!-- NAVIGATION -->
+<aside class="navigation">
+    <nav>
+        <ul class="nav luna-nav">
+            @NavItemCategory("Main")
+            @NavItemPage(("Dashboard", "/"))
+
+            @NavItemCategory("Management")
+            @NavItemPageArea(("Profile", "/Account/Manage/Index", "Identity"))
+            @NavItemPageArea(("Password", "/Account/Manage/ChangePassword", "Identity"))
+            @if (hasExternalLogins)
+            {
+                @NavItemPageArea(("External logins", "/Account/Manage/ExternalLogins", "Identity"))
+            }
+            @NavItemPageArea(("Personal data", "/Account/Manage/PersonalData", "Identity"))
+
+            <li class="nav-info">
+                <div class="m-t-xs">
+                    <br/>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</aside>
+<!-- /NAVIGATION -->

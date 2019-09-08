@@ -1,0 +1,23 @@
+﻿@page
+@model PersonalDataModel
+@{
+    ViewData["Title"] = "Personal Data";
+    ViewData["SubTitle"] = "Manage your personal data";
+    ViewData["IconClass"] = "pe-7s-info";
+    ViewData["Container"] = "fixed";
+    ViewData["ContentClass"] = "col-lg-12";
+}
+
+<p>Your account contains personal data that you have given us. This page allows you to download or delete that data.</p>
+<p>
+    <strong class="text-accent">Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
+</p>
+<form id="download-data" asp-page="DownloadPersonalData" method="post" class="form-group">
+    <button class="btn btn-primary" type="submit">Download</button>
+    <a id="delete" asp-page="DeletePersonalData" class="btn btn-primary">Delete</a>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial"/>
+}

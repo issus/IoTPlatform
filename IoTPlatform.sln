@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTPlatform.Data", "IoTPlatform\IoTPlatform.Data\IoTPlatform.Data.csproj", "{97680760-8A53-4967-91E0-2292A64052C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTPlatform.Logic", "IoTPlatform\IoTPlatform.Logic\IoTPlatform.Logic.csproj", "{49609CAF-346D-4471-B37E-951FFA12555A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTPlatform.Website", "IoTPlatform\IoTPlatform.Website\IoTPlatform.Website.csproj", "{8480D98D-9CC8-4F01-92F5-63D520C2C3EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97680760-8A53-4967-91E0-2292A64052C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97680760-8A53-4967-91E0-2292A64052C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97680760-8A53-4967-91E0-2292A64052C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97680760-8A53-4967-91E0-2292A64052C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49609CAF-346D-4471-B37E-951FFA12555A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49609CAF-346D-4471-B37E-951FFA12555A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49609CAF-346D-4471-B37E-951FFA12555A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49609CAF-346D-4471-B37E-951FFA12555A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8480D98D-9CC8-4F01-92F5-63D520C2C3EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8480D98D-9CC8-4F01-92F5-63D520C2C3EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8480D98D-9CC8-4F01-92F5-63D520C2C3EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8480D98D-9CC8-4F01-92F5-63D520C2C3EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {42CA1F3A-759B-4F39-B1C9-F80C3A814B2D}
+	EndGlobalSection
+EndGlobal
