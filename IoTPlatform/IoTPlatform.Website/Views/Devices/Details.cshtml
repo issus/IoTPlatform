@@ -1,0 +1,81 @@
+﻿@using System.Security.Claims;
+@model IoTPlatform.Data.Device.Device
+
+@{
+    ViewData["Title"] = "Details"; // page title. shown when BareBody is false
+    ViewData["SubTitle"] = "Device configuration parameters."; // page subtitle text. only shown when BareBody and TitlePanel are both false
+    ViewData["IconClass"] = "pe-7s-ticket"; // css class for the title icon. shown when BareBody is false
+    ViewData["BareBody"] = false; // if true skips rendering the title and the body panel, allowing for custom layouts. default is false
+    ViewData["TitlePanel"] = false; // if true layout makes use of the alternate layout with a title panel without a subtitle, instead of a view-title. default is false
+    ViewData["Container"] = "fluid"; // possible values are "fluid", "center" and "fixed". if not found defaults to "fluid".
+    ViewData["ContentClass"] = ""; // customizable css class to be applied to the parent element of the body content. useful for setting column sizes
+    ViewData["BodyPanelFilled"] = true; // fill the body panel background or leave it transparent. default is true
+    ViewData["BackLink"] = null; // text to show for a prompt-like layout with a back link button instead of the nav bar. default is null
+}
+
+<div>
+    <h4>Device</h4>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+            @if (Model.OwnerId == User.FindFirst(ClaimTypes.NameIdentifier).Value)
+            {
+                <span class="badge badge-info">mine</span>
+            }
+            @if (Model.IsPublic)
+            {
+                <span class="badge badge-success">public</span>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+</div>
+
+
+<div class="row">
+    <div class="col">
+        <h5>Nodes</h5>
+        <span>
+            <a asp-action="Create" asp-controller="Nodes" asp-route-id="@Model.Id" class="btn btn-success btn-sm">
+                <span><i class="pe-7s-plus"></i> Add Node</span>
+            </a>
+        </span>
+        <ul style="margin-top: 15px">
+            @foreach (var node in Model.Nodes)
+            {
+                <li>
+                    <a asp-action="Details" asp-controller="NodesController" asp-route-id="@node.Id">@node.Description</a>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col">
+        <h5>Units</h5>
+        <span>
+            <a asp-action="Create" asp-controller="Units" asp-route-id="@Model.Id" class="btn btn-success btn-sm">
+                <span><i class="pe-7s-plus"></i> Add Unit</span>
+            </a>
+        </span>
+        <ul style="margin-top: 15px">
+            @foreach (var unit in Model.Units)
+            {
+                <li>
+                    <a asp-action="Details" asp-controller="UnitsController" asp-route-id="@unit.Id">@unit.Description</a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

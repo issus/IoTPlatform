@@ -1,0 +1,55 @@
+﻿@model IoTPlatform.Data.Device.Node
+
+@{
+    ViewData["Title"] = "Edit Node"; // page title. shown when BareBody is false
+    ViewData["SubTitle"] = "Change the node's parameters."; // page subtitle text. only shown when BareBody and TitlePanel are both false
+    ViewData["IconClass"] = "pe-7s-edit"; // css class for the title icon. shown when BareBody is false
+    ViewData["BareBody"] = false; // if true skips rendering the title and the body panel, allowing for custom layouts. default is false
+    ViewData["TitlePanel"] = false; // if true layout makes use of the alternate layout with a title panel without a subtitle, instead of a view-title. default is false
+    ViewData["Container"] = "fluid"; // possible values are "fluid", "center" and "fixed". if not found defaults to "fluid".
+    ViewData["ContentClass"] = ""; // customizable css class to be applied to the parent element of the body content. useful for setting column sizes
+    ViewData["BodyPanelFilled"] = true; // fill the body panel background or leave it transparent. default is true
+    ViewData["BackLink"] = null; // text to show for a prompt-like layout with a back link button instead of the nav bar. default is null
+}
+
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="DeviceId" class="control-label"></label>
+        <select asp-for="DeviceId" class="form-control" asp-items="ViewBag.DeviceId"></select>
+        <span asp-validation-for="DeviceId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Key" class="control-label"></label>
+        <input asp-for="Key" class="form-control" />
+        <span asp-validation-for="Key" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Location" class="control-label"></label>
+        <input asp-for="Location" class="form-control" />
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Added" class="control-label"></label>
+        <input asp-for="Added" class="form-control" />
+        <span asp-validation-for="Added" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastSeen" class="control-label"></label>
+        <input asp-for="LastSeen" class="form-control" />
+        <span asp-validation-for="LastSeen" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

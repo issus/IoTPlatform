@@ -1,0 +1,41 @@
+﻿@model IoTPlatform.Data.Device.Unit
+
+
+@{
+    ViewData["Title"] = "Details"; // page title. shown when BareBody is false
+    ViewData["SubTitle"] = "Unit configuration parameters."; // page subtitle text. only shown when BareBody and TitlePanel are both false
+    ViewData["IconClass"] = "pe-7s-ticket"; // css class for the title icon. shown when BareBody is false
+    ViewData["BareBody"] = false; // if true skips rendering the title and the body panel, allowing for custom layouts. default is false
+    ViewData["TitlePanel"] = false; // if true layout makes use of the alternate layout with a title panel without a subtitle, instead of a view-title. default is false
+    ViewData["Container"] = "fluid"; // possible values are "fluid", "center" and "fixed". if not found defaults to "fluid".
+    ViewData["ContentClass"] = ""; // customizable css class to be applied to the parent element of the body content. useful for setting column sizes
+    ViewData["BodyPanelFilled"] = true; // fill the body panel background or leave it transparent. default is true
+    ViewData["BackLink"] = null; // text to show for a prompt-like layout with a back link button instead of the nav bar. default is null
+}
+
+<div>
+    <h4>Unit</h4>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Device)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Device.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UnitDisplay)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UnitDisplay)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+</div>

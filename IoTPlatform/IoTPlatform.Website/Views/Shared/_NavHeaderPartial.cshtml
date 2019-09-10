@@ -12,7 +12,7 @@
         string queryPageUrl;
         if (!string.IsNullOrEmpty(area))
         {
-            queryPageUrl = Url.Page(page, new {area});
+            queryPageUrl = Url.Page(page, new { area });
         }
         else
         {
@@ -27,13 +27,26 @@
 
     Func<string, IHtmlContent> NavItemCategory = @<li class='nav-category'>@item</li>;
 
-    Func<(string text, string page), IHtmlContent> NavItemPage = @<li class='@PageNavClass(item.page)'>
-                                                                     <a class='nav-link' href='@item.page'>@item.text</a>
-                                                                 </li>;
+Func<(string text, string page), IHtmlContent> NavItemPage = @<li class='@PageNavClass(item.page)'>
+    <a class='nav-link' href='@item.page'>@item.text</a>
+</li>;
 
-    Func<(string text, string page, string area), IHtmlContent> NavItemPageArea = @<li class='@PageNavClass(item.page, item.area)'>
-                                                                                      <a class='nav-link' asp-area='@item.area' asp-page='@item.page'>@item.text</a>
-                                                                                  </li>;
+Func<(string text, string page, string area), IHtmlContent> NavItemPageArea = @<li class='@PageNavClass(item.page, item.area)'>
+    <a class='nav-link' asp-area='@item.area' asp-page='@item.page'>@item.text</a>
+</li>;
+
+
+string ControllerNavClass(string controllerName, string actionName)
+{
+return (string.Equals(ViewContext.RouteData.Values["controller"] as string ?? "", controllerName, StringComparison.OrdinalIgnoreCase))
+   && (string.Equals(ViewContext.RouteData.Values["action"] as string ?? "", actionName, StringComparison.OrdinalIgnoreCase)) ? "active" : null;
+}
+
+Func<(string text, string controllerName, string actionName),
+IHtmlContent> NavItemController = @<li class='@ControllerNavClass(item.controllerName, item.actionName)'>
+    <a class='nav-link' asp-controller='@item.controllerName' asp-action='@item.actionName'>@item.text</a>
+</li>;
+
 }
 
 <!-- HEADER -->
@@ -58,7 +71,7 @@
             </a>
         </div>
         <span class="mr-auto"></span>
-        <partial name="_LoginPartial"/>
+        <partial name="_LoginPartial" />
     </div>
 </nav>
 <!-- /HEADER -->
@@ -67,7 +80,11 @@
     <nav>
         <ul class="nav luna-nav">
             @NavItemCategory("Main")
-            @NavItemPage(("Dashboard", "/"))
+            @NavItemController(("Dashboard", "Home", "Index"))
+
+            @NavItemCategory("Devices")
+            @NavItemController(("List", "Devices", "Index"))
+            @NavItemController(("Add New", "Devices", "Create"))
 
             @NavItemCategory("Management")
             @NavItemPageArea(("Profile", "/Account/Manage/Index", "Identity"))
@@ -80,7 +97,7 @@
 
             <li class="nav-info">
                 <div class="m-t-xs">
-                    <br/>
+                    <br />
                 </div>
             </li>
         </ul>

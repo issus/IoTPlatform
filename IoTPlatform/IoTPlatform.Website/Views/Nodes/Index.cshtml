@@ -1,0 +1,66 @@
+﻿@model IEnumerable<IoTPlatform.Data.Device.Node>
+@{
+    ViewData["Title"] = "Nodes"; // page title. shown when BareBody is false
+    ViewData["SubTitle"] = "Physical device nodes that are submitting data."; // page subtitle text. only shown when BareBody and TitlePanel are both false
+    ViewData["IconClass"] = "pe-7s-folder"; // css class for the title icon. shown when BareBody is false
+    ViewData["BareBody"] = false; // if true skips rendering the title and the body panel, allowing for custom layouts. default is false
+    ViewData["TitlePanel"] = false; // if true layout makes use of the alternate layout with a title panel without a subtitle, instead of a view-title. default is false
+    ViewData["Container"] = "fluid"; // possible values are "fluid", "center" and "fixed". if not found defaults to "fluid".
+    ViewData["ContentClass"] = ""; // customizable css class to be applied to the parent element of the body content. useful for setting column sizes
+    ViewData["BodyPanelFilled"] = true; // fill the body panel background or leave it transparent. default is true
+    ViewData["BackLink"] = null; // text to show for a prompt-like layout with a back link button instead of the nav bar. default is null
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-success btn-sm">
+        <span><i class="pe-7s-plus"></i> Create New</span>
+    </a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Device)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Added)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastSeen)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Device.Name)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Added)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastSeen)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
