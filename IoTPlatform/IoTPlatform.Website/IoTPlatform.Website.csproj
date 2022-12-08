@@ -45,7 +45,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="MySql.Data" Version="8.0.16" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.16" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Sendgrid" Version="9.11.0" />
     <PackageReference Include="SmartBreadcrumbs" Version="2.1.0" />
   </ItemGroup>
